@@ -1,16 +1,22 @@
 const nodemailer = require("nodemailer");
 
 exports.handler = async (event) => {
+  console.log("Contact function triggered");
+
   if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Method Not Allowed",
-    };
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
-    const { firstName, lastName, email, phone, message } =
-      JSON.parse(event.body);
+    const body = JSON.parse(event.body);
+    console.log("Received body:", body);
+
+    const { firstName, lastName, email, phone, message } = body;
+
+    console.log("Using env vars:", {
+      user: !!process.env.EMAIL_USER,
+      pass: !!process.env.EMAIL_PASS,
+    });
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -20,29 +26,31 @@ exports.handler = async (event) => {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       subject: "New Portfolio Contact",
       html: `
-        <h3>New Contact Request</h3>
         <p><b>Name:</b> ${firstName} ${lastName}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Phone:</b> ${phone}</p>
         <p><b>Message:</b> ${message}</p>
       `,
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
 
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true }),
     };
+
   } catch (error) {
+    console.error("Contact error:", error);
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ success: false, error: error.message }),
     };
   }
 };
