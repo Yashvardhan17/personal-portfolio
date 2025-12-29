@@ -65,7 +65,7 @@ export const Contact = () => {
 
             <form onSubmit={handleSubmit}>
               <Row>
-                <Col sm={6} className="px-1">
+                <Col sm={6} className="mb-3">
                   <input
                     type="text"
                     value={formDetails.firstName}
@@ -75,7 +75,7 @@ export const Contact = () => {
                   />
                 </Col>
 
-                <Col sm={6} className="px-1">
+                <Col sm={6} className="mb-3">
                   <input
                     type="text"
                     value={formDetails.lastName}
@@ -85,7 +85,7 @@ export const Contact = () => {
                   />
                 </Col>
 
-                <Col sm={6} className="px-1">
+                <Col sm={6} className="mb-3">
                   <input
                     type="email"
                     value={formDetails.email}
@@ -95,7 +95,7 @@ export const Contact = () => {
                   />
                 </Col>
 
-                <Col sm={6} className="px-1">
+                <Col sm={6} className="mb-3">
                   <input
                     type="tel"
                     value={formDetails.phone}
@@ -105,25 +105,26 @@ export const Contact = () => {
                 </Col>
 
                 <Col>
-                  <textarea
+                <textarea
                     rows="6"
                     value={formDetails.message}
                     placeholder="Message"
                     onChange={(e) => onFormUpdate("message", e.target.value)}
                     required
-                  />
-                  <button type="submit">
-                    <span>{buttonText}</span>
-                  </button>
-                </Col>
+                />
 
-                {status.message && (
-                  <Col>
+                <div className="contact-actions">
+                    <button type="submit">
+                    <span>{buttonText}</span>
+                    </button>
+
+                    {status.message && (
                     <p className={status.success ? "success" : "danger"}>
-                      {status.message}
+                        {status.message}
                     </p>
-                  </Col>
-                )}
+                    )}
+                </div>
+                </Col>
               </Row>
             </form>
           </Col>

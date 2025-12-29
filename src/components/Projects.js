@@ -22,16 +22,19 @@ const backendProjects = [
     title: "Instagram Backend API",
     description: "GoLang • MongoDB • REST APIs",
     imgUrl: IBA,
+    githubUrl: "https://github.com/Yashvardhan17/InstagramBackendAPI",
   },
   {
     title: "Crypto Price Alert System",
     description: "Python • Flask • PostgreSQL • Email Alerts",
     imgUrl: CPA,
+    githubUrl: "https://github.com/Yashvardhan17/Crypto-Price-Alert",
   },
   {
     title: "Transaction Reconciliation Service",
     description: "Python • Django • Financial Backend APIs",
     imgUrl: TRS,
+    githubUrl: "https://github.com/Yashvardhan17/transaction-reconciliation-service",
   },
 ];
 
@@ -40,11 +43,13 @@ const financeProjects = [
     title: "BankDD – Bank Money Transfer System",
     description: "Java • MySQL • Transaction Handling",
     imgUrl: BMTS,
+    githubUrl: "https://github.com/Yashvardhan17/BankDD",
   },
   {
     title: "Transaction Reconciliation Service",
-    description: "Multi-system transaction comparison & reporting",
+    description: "Python • Django • Financial Backend APIs",
     imgUrl: TRS,
+    githubUrl: "https://github.com/Yashvardhan17/transaction-reconciliation-service",
   },
 ];
 
@@ -53,6 +58,7 @@ const securityProjects = [
     title: "PassMan – Password Manager",
     description: "PHP • MySQL • Secure Credential Storage",
     imgUrl: PM,
+    githubUrl: "https://github.com/Yashvardhan17/PassMan"
   },
 ];
     

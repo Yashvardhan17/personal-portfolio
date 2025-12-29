@@ -59,7 +59,9 @@ export const Banner = () => {
                         <span className="tagline">Welcome to my Portfolio</span>
                         <h1>{`Hi! I'm Yashvardhan Pandey `}<span className="wrap">{text}</span></h1>
                         <p>I’m a software engineer with hands-on experience in automation, backend development, and modern web technologies. I enjoy building reliable systems, improving performance, and solving real-world problems through clean and maintainable code. I’m particularly passionate about test automation, APIs, and creating user-focused applications.</p>
+                        <a href="#connect" style={{ textDecoration: "none" }}>
                         <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size = {25}/></button>
+                        </a>
                         </div>}
                         </TrackVisibility>
                     </Col>
