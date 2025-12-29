@@ -9,7 +9,8 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { firstName, lastName, email, phone, message } = JSON.parse(event.body);
+    const { firstName, lastName, email, phone, message } =
+      JSON.parse(event.body);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -20,14 +21,15 @@ exports.handler = async (event) => {
     });
 
     const mailOptions = {
-      from: `${firstName} ${lastName} <${email}>`,
+      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
-      subject: "Portfolio Contact Form",
+      subject: "New Portfolio Contact",
       html: `
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <h3>New Contact Request</h3>
+        <p><b>Name:</b> ${firstName} ${lastName}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Message:</b> ${message}</p>
       `,
     };
 
@@ -35,7 +37,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Email sent successfully" }),
+      body: JSON.stringify({ success: true }),
     };
   } catch (error) {
     return {
