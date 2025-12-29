@@ -18,6 +18,7 @@ export const Banner = () => {
     const [delta, setDelta] = useState(300 - Math.random() * 100);
     const period = 2000;
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         let ticker = setInterval(() => { 
             
@@ -53,7 +54,7 @@ export const Banner = () => {
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
                         <TrackVisibility>
-                        {( { isVisible }) =>
+                        {(  { isVisible }) =>
                         <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                         <span className="tagline">Welcome to my Portfolio</span>
                         <h1>{`Hi! I'm Yashvardhan Pandey `}<span className="wrap">{text}</span></h1>
